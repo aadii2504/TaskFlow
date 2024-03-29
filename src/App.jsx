@@ -8,8 +8,9 @@ function App() {
   const [todo, setTodo] = useState('')
   const [todos, setTodos] = useState([  ])
  
-  const handleEdit = ()=> {
-    
+  const handleEdit = (e ,id)=> {
+    let t  = todos.filter(i=>i.id === id)
+    setTodo(t[0].todo)
   }
 
 
@@ -67,7 +68,7 @@ function App() {
                 <div className={item.isCompleted?"line-through":""}>{item.todo}</div>
             </div>
                 <div className="buttons">
-                  <button onClick={handleEdit} className='bg-violet-500 hover:bg-violet-800 hover:text-opacity-45 p-5 py-1 text-sm font-bold text-black rounded-md mx-1'>Edit</button>
+                  <button onClick={(e)=>handleEdit(e,item.id)} className='bg-violet-500 hover:bg-violet-800 hover:text-opacity-45 p-5 py-1 text-sm font-bold text-black rounded-md mx-1'>Edit</button>
                   <button onClick={(e)=>{handleDelete(e ,item.id)}} className='bg-violet-500 hover:bg-violet-800 hover:text-opacity-45 p-5 py-1 text-sm font-bold text-black rounded-md mx-1'>Delete</button>
                 </div>
           </div>
